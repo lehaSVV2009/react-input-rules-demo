@@ -1,5 +1,7 @@
 # react-input-rules-demo
-The task is to re-create this input field: https://cl.ly/41948ce07bab.
+The [task](https://gist.github.com/eni9889/0fd4e094ecc309dca268fbfd66d420a4) is to re-create this input field: https://cl.ly/41948ce07bab.
+
+The demo is here - https://lehasvv2009.github.io/react-input-rules-demo/.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

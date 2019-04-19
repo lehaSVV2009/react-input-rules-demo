@@ -21,7 +21,8 @@ class UrlRule extends PureComponent {
   };
 
   render() {
-    const { type, url, label, urlPlaceholder } = this.props.rule;
+    const { rule, errors } = this.props;
+    const { type, url, label, urlPlaceholder } = rule;
 
     if (!type) {
       throw new Error(`Mandatory "type" property is missing`);
@@ -45,6 +46,7 @@ class UrlRule extends PureComponent {
           placeholder={urlPlaceholder || "Display Url"}
           onChange={this.handleUrlChange}
         />
+        {errors && errors.url && <div>{errors.url}</div>}
       </div>
     );
   }

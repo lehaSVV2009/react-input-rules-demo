@@ -1,5 +1,9 @@
-import React, { memo } from "react";
-import UrlRule from "./UrlRule";
+import React, { Fragment, memo } from "react";
+
+import AddIcon from "../icons/AddIcon";
+import Button from "../ui/Button";
+import UrlRule from "../UrlRule";
+import { Title, RulesContainer } from "./styles";
 
 const hasAnyErrors = errors =>
   errors &&
@@ -9,9 +13,9 @@ const hasAnyErrors = errors =>
 
 const Rules = memo(
   ({ title, rules, errors, onNewRule, onRemoveRule, onChangeRule }) => (
-    <div>
-      <div>{title || ""}</div>
-      <div>
+    <Fragment>
+      <Title>{title || ""}</Title>
+      <RulesContainer>
         {Object.values(rules).map(rule => (
           <UrlRule
             key={`rule-${rule.id}`}
@@ -21,9 +25,13 @@ const Rules = memo(
             onChange={onChangeRule}
           />
         ))}
-      </div>
-      {!hasAnyErrors(errors) && <button onClick={onNewRule}>+ New rule</button>}
-    </div>
+      </RulesContainer>
+      {!hasAnyErrors(errors) && (
+        <Button onClick={onNewRule}>
+          <AddIcon width={10} /> New rule
+        </Button>
+      )}
+    </Fragment>
   )
 );
 

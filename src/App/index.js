@@ -1,12 +1,15 @@
 import React, { memo, Fragment } from "react";
+import { ThemeProvider } from "styled-components";
 
-import DisplayRulesPage from "../DisplayRulesPage";
-import { GlobalStyle } from "./styles";
+import RulesPage from "../RulesPage";
+import { GlobalStyle, defaultTheme } from "./styles";
 
 const App = memo(() => (
   <Fragment>
     <GlobalStyle />
-    <DisplayRulesPage />
+    <ThemeProvider theme={defaultTheme}>
+      <RulesPage />
+    </ThemeProvider>
   </Fragment>
 ));
 

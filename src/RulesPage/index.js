@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import uuid from "uuid/v4";
 
-import Rules from "./Rules";
-import { RULE_TYPES } from "./UrlRule";
+import Rules from "../Rules";
+import { RULE_TYPES } from "../UrlRule";
+import { Root } from "./styles";
 
 const DEFAULT_RULE_TYPE = RULE_TYPES.CONTAINS;
 
-class DisplayRulesPage extends Component {
+class RulesPage extends Component {
   state = {
     rules: {},
     errors: {}
@@ -43,7 +44,7 @@ class DisplayRulesPage extends Component {
   validateRule = rule => {
     const errors = {};
 
-    if (!rule.url) {
+    if (!rule.url || !rule.url.trim()) {
       errors.url = "URL is Missing";
     }
 
@@ -54,16 +55,18 @@ class DisplayRulesPage extends Component {
     const { rules, errors } = this.state;
 
     return (
-      <Rules
-        title="Where would you like to display your campaign?"
-        rules={rules}
-        errors={errors}
-        onNewRule={this.handleNewRule}
-        onChangeRule={this.handleChangeRule}
-        onRemoveRule={this.handleRemoveRule}
-      />
+      <Root>
+        <Rules
+          title="Where would you like to display your campaign?"
+          rules={rules}
+          errors={errors}
+          onNewRule={this.handleNewRule}
+          onChangeRule={this.handleChangeRule}
+          onRemoveRule={this.handleRemoveRule}
+        />
+      </Root>
     );
   }
 }
 
-export default DisplayRulesPage;
+export default RulesPage;
